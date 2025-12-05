@@ -1,4 +1,4 @@
-# GitHub Activity Bot
+# This is just only for testing how spam commit how i wan to learn
 
 This repository demonstrates a simple automation project using GitHub Actions to simulate activity by updating a log file at regular intervals.
 

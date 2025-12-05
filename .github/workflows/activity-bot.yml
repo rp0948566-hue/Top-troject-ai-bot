@@ -1,0 +1,37 @@
+name: Activity Bot
+
+on:
+  schedule:
+    - cron: "*/15 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  update-activity:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Append timestamp to activity-log.txt
+        run: |
+          echo "Updated: $(date)" >> activity-log.txt
+
+      - name: Configure Git
+        run: |
+          git config --global user.name "activity-bot"
+          git config --global user.email "activity-bot@github.com"
+
+      - name: Commit and push changes
+        run: |
+          git add activity-log.txt
+          if git diff --staged --quiet; then
+            echo "No changes to commit"
+          else
+            git commit -m "Update activity log"
+            git push
+          fi

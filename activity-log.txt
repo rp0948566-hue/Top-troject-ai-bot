@@ -107,3 +107,5 @@ Manual update 90
 Manual update 16 
 Manual update 17 
 Manual update 91 
+Manual update 18 
+Manual update 92 
